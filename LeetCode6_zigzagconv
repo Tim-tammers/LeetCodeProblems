@@ -1,0 +1,33 @@
+public class Solution {
+    public string Convert(string s, int numRows) {
+        if(numRows == 1){
+            return s;
+        }
+        bool zag = true; 
+        int index=0;
+        string[] result = new string[numRows];
+        for(int i = 0; i<s.Length; i++){
+            result[index] = result[index]+s[i];
+            if(zag){
+                if(index==numRows-1){
+                    zag = !zag;
+                    index--;
+                }else{
+                index++;
+                }
+            }else{
+               if(index==0){
+                    zag = !zag;
+                    index++;
+                }else{
+                index--;
+                }
+            }
+        }
+        string final = "";
+        for(int i =0; i< result.Length; i++){
+            final = final + result[i];
+        }
+       return final;
+    }
+}
